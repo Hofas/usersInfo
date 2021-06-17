@@ -14,7 +14,17 @@
     <title>usersInfo</title>
 </head>
 <body>
-
+<div id="admLogin"><input type="button" value="adm" id="amdButton"></div>
+<div id="header"><p>Users Info page...</p></div>
+<div id="search"><input id="searchUser" type="text"></div>
 
 </body>
+<script>
+    const admButton = document.querySelector('#amdButton');
+    admButton.addEventListener('click',()=>{
+        window.location.href = "adminLogin.php";
+
+    })
+
+</script>
 </html>
