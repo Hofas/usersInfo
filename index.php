@@ -1,5 +1,13 @@
 <?php
+include "connect.php";
+//$selectQuery = "SELECT * from usersTest";
+//$result =  mysqli_query($db,$selectQuery);
+//$data = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
+$dbPDO = new DB();
+//$data = $dbPDO->viewData();
+$data = $dbPDO->viewData();
+//var_dump($data);
 ?>
 
 
@@ -16,8 +24,22 @@
 <body>
 <div id="admLogin"><input type="button" value="adm" id="amdButton"></div>
 <div id="header"><p>Users Info page...</p></div>
-<div id="search"><input id="searchUser" type="text"></div>
+<div id="search">
+    <form action="" method="post">
+        <input type="text" name="user" id="user" oninput="search(this.value)">
+    </form>
+    <ul id="dataViewer">
+        <?php
+        foreach ($data as $i) {
+            $dn = $i['Displayname'];
+            $id = $i['id'];
+       echo "<li> <a href='visit.php?ID=$id'>". $dn."</a></li>";
+        }
+        ?>
+    </ul>
 
+</div>
+<script src="main.js"></script>
 </body>
 <script>
     const admButton = document.querySelector('#amdButton');
