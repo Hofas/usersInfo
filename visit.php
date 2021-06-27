@@ -20,6 +20,7 @@ $city = $data[0]['City'];
 $Eid = $data[0]['EmployeeID'];
 $mobile = $data[0]['MobilePhone'];
 $mail = $data[0]['Mail'];
+$office = $data[0]['Office'];
 $grupy = $data[0]['Grupy'];
 $grupy = str_ireplace(" V-TG-PL","::v-tg-pl",$grupy);
 $grupy = explode("::",$grupy);
@@ -42,7 +43,7 @@ $grupy = explode("::",$grupy);
     <link rel="stylesheet" href="visit.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="resize()">
 
 <div id="main">
 
@@ -84,6 +85,10 @@ $grupy = explode("::",$grupy);
             <td><?php echo $mail;?></td>
         </tr>
         <tr>
+            <td>Office:</td>
+            <td><?php echo $office;?></td>
+        </tr>
+        <tr>
             <td>Grupy:</td>
             <td id="grupy"><?php foreach ($grupy as $grupa) {
                  echo $grupa."<br>";
@@ -93,6 +98,15 @@ $grupy = explode("::",$grupy);
     </table>
 
 </div>
+<script>
+    function resize(){
+        let contentWidth = document.getElementById("userInfo").offsetWidth;
+        let contentHeight = document.getElementById("userInfo").offsetHeight;
+        window.resizeTo(contentWidth+20,contentHeight+100);
+        // alert('works..');
 
+
+    }
+</script>
 </body>
 </html>

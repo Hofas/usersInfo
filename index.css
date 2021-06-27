@@ -79,3 +79,33 @@ a {
 form {
 
 }
+
+.scope {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*font-size: 2em;*/
+    /*padding: 20px;*/
+    /*width: 500px;*/
+}
+.scope input[type='radio']:checked+label{
+    color: red;
+    /*text-shadow: 0 0 20px rgba(219, 193, 37, 0.5);*/
+    font-weight: bold;
+}
+.scope input[type='radio']{
+    border: 0;
+    width: 50%;
+    height: 4em;
+
+}
+
+.scope label {
+    cursor: pointer;
+    font-size: 2em;
+    padding: 20px;
+}
+.scope label:active{
+    color: red;
+}

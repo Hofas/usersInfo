@@ -2,7 +2,16 @@
 require "connect.php";
 
 $name = $_POST['name'];
+$scope = $_POST['scope'];
 $con = new DB();
-$data = $con->searchData($name);
+if ($scope == "user") {
 
-echo json_encode($data);
+    $data = $con->searchData($name);
+    echo json_encode($data);
+}
+if ($scope == "dep") {
+
+    $data = $con->searchDep($name);
+    echo json_encode($data);
+}
+

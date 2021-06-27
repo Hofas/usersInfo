@@ -1,29 +1,32 @@
 function search(name) {
-    // console.log(name);
-    const dataViewer = document.querySelector('#dataViewer');
+    const userScope = document.querySelector('#userScope');
+    let scope;
     if (name.length < 1) {
-        dataViewer.innerHTML = "";
+     clearSearch();
     } else {
-        fetchSearchData(name);
+        if (userScope.checked)
+        {scope = 'user'}
+        else {scope = 'dep'}
         }
+    fetchSearchData(name,scope);
 }
 
-function fetchSearchData(name) {
+function fetchSearchData(name,scope) {
+
     fetch('search.php',{
         method:'POST',
-        body: new URLSearchParams('name=' + name)
+        body: new URLSearchParams('name=' + name + '&scope=' +scope)
     })
         .then(res => res.json())
-        .then(res => viewSearchResult(res))
+        .then(res => viewSearchResult(res,scope))
         .catch(e => console.error('Error:' + e))
-}
+    }
 
-function viewSearchResult(data) {
-    const dataViewer = document.querySelector('#dataViewer');
-    console.log(dataViewer);
 
-    dataViewer.innerHTML = "";
 
+function viewSearchResult(data,scope) {
+    clearSearch();
+    if (scope === "user") {
     for (let i=0;i< data.length;i++){
         const li = document.createElement('li');
         // li.innerHTML = data[i]['Displayname'];
@@ -35,9 +38,40 @@ function viewSearchResult(data) {
         li.innerHTML = `<a href='#' onclick=openNewWindow(${id}) >` + dn + "</a>";
         dataViewer.appendChild(li);
     }
+} else {
+        for (let i=0;i< data.length;i++){
+            const li = document.createElement('li');
+            let dep = data[i]['Department'];
+            let depSearch = dep.replace(" ","+");
+            depSearch = depSearch.replace(" ","+");
+            depSearch = depSearch.replace(" ","+");
+            depSearch = depSearch.replace(" ","+");
+            depSearch = depSearch.replace(" ","+");
+            depSearch = depSearch.replace(" ","+");
+            depSearch = depSearch.replace(" ","+");
+            li.innerHTML = `<a href='#' onclick=openDepVisit('${depSearch}') >` + dep + "</a>";
+            dataViewer.appendChild(li);
+        }
+
+
+    }
 }
 
 function openNewWindow(id) {
     window.open(`visit.php?ID=${id}`,`Visit${id}`,'menubar=no,toolbar=no,resizable=no,height=600,width=600');
     // alert(id);
 };
+
+function openDepVisit(dep) {
+    window.open(`visitDep.php?dep=${dep}`,`VisitDep${dep}`,'menubar=no,toolbar=no,resizable=no,height=600,width=1000');
+    // alert(id);
+};
+
+
+
+function clearSearch(){
+
+    const dataViewer = document.querySelector('#dataViewer');
+    dataViewer.innerHTML = "";
+
+}

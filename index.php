@@ -24,6 +24,12 @@
 <body>
 <div id="admLogin"><input type="button" value="adm" id="amdButton"></div>
 <div id="header"><p>Users Info page...</p></div>
+<div class="scope">
+    <input type="radio" id="userScope"  name="scope" value="userScope" checked="true">
+    <label for="userScope">Pracownik</label>
+    <input type="radio" id="depScope" name="scope" value="depScope">
+    <label for="depScope">Dział</label>
+</div>
 <div id="search">
     <form action="" method="post">
         <input type="text" name="user" id="user" oninput="search(this.value)" autocomplete="off"">

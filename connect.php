@@ -51,4 +51,17 @@ public function getUser($id){
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
        }
 
+    public function searchDep($dep){
+        $selectQuery = "SELECT DISTINCT Department FROM usersTest WHERE Department LIKE '%".$dep."%'";
+        $stmt = $this->con->prepare($selectQuery);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+public function searchUserByDep($dep){
+        $selectQuery = "SELECT Displayname, Mail, OficePhone, MobilePhone FROM usersTest WHERE Department = '".$dep."'";
+        $stmt= $this->con->prepare($selectQuery);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 }

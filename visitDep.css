@@ -19,6 +19,7 @@ body {
 #userInfo {
     font-size: 1.5em;
     box-shadow: 0 0 20px rgba(0,0,0,.5);
+    min-width: 500px;
 }
 
 #userInfo td {
