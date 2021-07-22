@@ -37,7 +37,7 @@ public function viewData() {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
-public function  searchData($name) {
+public function  searchData($name) { //dorobić param market i w zapytaniu where Market = $market
         $selectQuery = "SELECT Displayname, id from usersTest WHERE Displayname LIKE '%".$name."%'"; //:name
         $stmt = $this->con->prepare($selectQuery);
         $stmt->execute();   //$stmt->execute(["name" => "%".$name."%"]);
@@ -51,7 +51,7 @@ public function getUser($id){
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
        }
 
-    public function searchDep($dep){
+    public function searchDep($dep){ //dorobić param market i w zapytaniu where Market = $market
         $selectQuery = "SELECT DISTINCT Department FROM usersTest WHERE Department LIKE '%".$dep."%'";
         $stmt = $this->con->prepare($selectQuery);
         $stmt->execute();

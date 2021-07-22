@@ -24,6 +24,16 @@
 <body>
 <div id="admLogin"><input type="button" value="adm" id="amdButton"></div>
 <div id="header"><p>Users Info page...</p></div>
+<div class="officeScope">
+    <label for="market">Hala:</label>
+       <select name="market" id="market">
+           <option value="000">All</option>
+           <option value="101">Centrala 101</option>
+           <option value="110">Poznan 110</option>
+    </select>
+
+</div>
+
 <div class="scope">
     <input type="radio" id="userScope"  name="scope" value="userScope" checked="true">
     <label for="userScope">Pracownik</label>

@@ -1,5 +1,7 @@
 function search(name) {
     const userScope = document.querySelector('#userScope');
+    const marketScope = document.querySelector('#market');
+    let market;
     let scope;
     if (name.length < 1) {
      clearSearch();
@@ -8,14 +10,16 @@ function search(name) {
         {scope = 'user'}
         else {scope = 'dep'}
         }
-    fetchSearchData(name,scope);
+    market = marketScope.value;
+    console.log(market);
+    fetchSearchData(name,scope,market);
 }
 
-function fetchSearchData(name,scope) {
+function fetchSearchData(name,scope,market) {
 
     fetch('search.php',{
         method:'POST',
-        body: new URLSearchParams('name=' + name + '&scope=' +scope)
+        body: new URLSearchParams('name=' + name + '&scope=' +scope + '&market=' + market)
     })
         .then(res => res.json())
         .then(res => viewSearchResult(res,scope))
@@ -26,6 +30,7 @@ function fetchSearchData(name,scope) {
 
 function viewSearchResult(data,scope) {
     clearSearch();
+    const dataViewer = document.querySelector('#dataViewer');
     if (scope === "user") {
     for (let i=0;i< data.length;i++){
         const li = document.createElement('li');
