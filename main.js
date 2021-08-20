@@ -22,13 +22,13 @@ function fetchSearchData(name,scope,market) {
         body: new URLSearchParams('name=' + name + '&scope=' +scope + '&market=' + market)
     })
         .then(res => res.json())
-        .then(res => viewSearchResult(res,scope))
+        .then(res => viewSearchResult(res,scope,market))
         .catch(e => console.error('Error:' + e))
     }
 
 
 
-function viewSearchResult(data,scope) {
+function viewSearchResult(data,scope,market) {
     clearSearch();
     const dataViewer = document.querySelector('#dataViewer');
     if (scope === "user") {
@@ -54,7 +54,7 @@ function viewSearchResult(data,scope) {
             depSearch = depSearch.replace(" ","+");
             depSearch = depSearch.replace(" ","+");
             depSearch = depSearch.replace(" ","+");
-            li.innerHTML = `<a href='#' onclick=openDepVisit('${depSearch}') >` + dep + "</a>";
+            li.innerHTML = `<a href='#' onclick=openDepVisit('${depSearch}','${market}') >` + dep + "</a>";
             dataViewer.appendChild(li);
         }
 
@@ -67,8 +67,8 @@ function openNewWindow(id) {
     // alert(id);
 };
 
-function openDepVisit(dep) {
-    window.open(`visitDep.php?dep=${dep}`,`VisitDep${dep}`,'menubar=no,toolbar=no,resizable=no,height=600,width=1000');
+function openDepVisit(dep, market) { // tutaj należy dopisać do URL Market a visitDEP.php dodać parametr i w connect searchUserByDep($dep) dodac market
+    window.open(`visitDep.php?dep=${dep}&market=${market}`,`VisitDep${dep}`,'menubar=no,toolbar=no,resizable=no,height=600,width=1000');
     // alert(id);
 };
 

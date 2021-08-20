@@ -15,6 +15,9 @@ $dn =$data[0]['Displayname'];
 $phone = $data[0]['OficePhone'];
 $dep = $data[0]['Department'];
 $title  = $data[0]['Title'];
+//$description = $data[0]['Description'];
+//$hala = substr($description,0,3);
+$hala = $data[0]['Market'];
 $manager = $data[0]['Manager'];
 $city = $data[0]['City'];
 $Eid = $data[0]['EmployeeID'];
@@ -59,6 +62,10 @@ $grupy = explode("::",$grupy);
         <tr>
             <td>Stanowisko:</td>
             <td><?php echo $title;?></td>
+        </tr>
+        <tr>
+            <td>Hala:</td>
+            <td><?php echo $hala;?></td>
         </tr>
         <tr>
             <td>Przełożony:</td>

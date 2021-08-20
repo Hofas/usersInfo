@@ -109,3 +109,15 @@ form {
 .scope label:active{
     color: red;
 }
+
+#market {
+    font-size: 2em;
+    padding: 5px;
+    text-align-last: center;
+    direction: rtl;
+}
+
+label[for='market'] {
+    font-size: 2em;
+
+}

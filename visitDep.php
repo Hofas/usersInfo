@@ -2,11 +2,11 @@
 include "connect.php";
 
 $dep = $_GET['dep'];
-
+$market = $_GET['market'];
 //echo $dep;
 $con = new DB();
 
-$data = $con->searchUserByDep($dep);
+$data = $con->searchUserByDep($dep, $market);
 
 
 ?>
@@ -32,10 +32,13 @@ $data = $con->searchUserByDep($dep);
   foreach ($data as $record) {
       $mobilka = $record['MobilePhone'];
       if (strlen($mobilka)<1){$mobilka = 'No Mobile';};
+      $hala = substr($record['Description'],0,3);
       echo <<<EOL
 
         <tr>
             <td>{$record['Displayname']}</td>
+            <td>{$hala}</td>        
+            <td>{$record['Department']}</td>        
             <td>{$record['Mail']}</td>
             <td>{$record['OficePhone']}</td>
             <td>{$mobilka}</td>
